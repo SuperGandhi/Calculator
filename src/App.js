@@ -1,10 +1,18 @@
 import './App.css';
+import dogebeta from './images/dogebeta.png';
 import Button from './components/Button';
 import ButtonClear from './components/ButtonClear';
 import Screen from './components/Screen';
-import dogebeta from './images/dogebeta.png'
+import { useState } from 'react';
+
 
 function App() {
+  const [input, setInput] = useState('');
+
+  const addInput = value => {
+    setInput(input + value);
+  };
+
   return (
     <div className="App">
       <div className='baby-doge-container'>
@@ -15,36 +23,35 @@ function App() {
         />
       </div>
       <div className="container-calculator">
-        <Screen/>
+        <Screen input={input}/>
         <div className="row">
-          <Button>1</Button>
-          <Button>2</Button>
-          <Button>3</Button>
-          <Button>+</Button>
+          <Button driveClick={addInput}>1</Button>
+          <Button driveClick={addInput}>2</Button>
+          <Button driveClick={addInput}>3</Button>
+          <Button driveClick={addInput}>+</Button>
         </div>
         <div className="row">
-          <Button>4</Button>
-          <Button>5</Button>
-          <Button>6</Button>
-          <Button>-</Button>
+          <Button driveClick={addInput}>4</Button>
+          <Button driveClick={addInput}>5</Button>
+          <Button driveClick={addInput}>6</Button>
+          <Button driveClick={addInput}>-</Button>
         </div>
         <div className="row">
-          <Button>7</Button>
-          <Button>8</Button>
-          <Button>9</Button>
-          <Button>*</Button>
+          <Button driveClick={addInput}>7</Button>
+          <Button driveClick={addInput}>8</Button>
+          <Button driveClick={addInput}>9</Button>
+          <Button driveClick={addInput}>*</Button>
         </div>
         <div className="row">
-          <Button>=</Button>
-          <Button>0</Button>
-          <Button>.</Button>
-          <Button>/</Button>
+          <Button driveClick={addInput}>=</Button>
+          <Button driveClick={addInput}>0</Button>
+          <Button driveClick={addInput}>.</Button>
+          <Button driveClick={addInput}>/</Button>
         </div>
         <div className="row">
-          <Button>√</Button>
-          <Button>%</Button>
-          <Button>x²</Button>
-          <ButtonClear>
+          <Button driveClick={addInput}>√</Button>
+          <Button driveClick={addInput}>%</Button>
+          <ButtonClear driveClear={()=> setInput('')}>
             Clear
           </ButtonClear>
         </div>
