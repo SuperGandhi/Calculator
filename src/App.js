@@ -4,13 +4,21 @@ import Button from './components/Button';
 import ButtonClear from './components/ButtonClear';
 import Screen from './components/Screen';
 import { useState } from 'react';
-
+import {evaluate} from 'mathjs';
 
 function App() {
   const [input, setInput] = useState('');
 
   const addInput = value => {
     setInput(input + value);
+  };
+
+  const calculateResult = () =>{
+    if(input){
+      setInput(evaluate(input));
+    } else{
+      alert("Entry values!")
+    }
   };
 
   return (
@@ -43,7 +51,7 @@ function App() {
           <Button driveClick={addInput}>*</Button>
         </div>
         <div className="row">
-          <Button driveClick={addInput}>=</Button>
+          <Button driveClick={calculateResult}>=</Button>
           <Button driveClick={addInput}>0</Button>
           <Button driveClick={addInput}>.</Button>
           <Button driveClick={addInput}>/</Button>
